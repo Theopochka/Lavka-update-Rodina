@@ -1,25 +1,35 @@
 script_name('Lavka Market || Rodina')
-script_version('1.0')
+
+local VersionV = '1.1'
+script_version(VersionV)
+
 script_author('Theopka')
-local VersionV = '1.0'
 
 local faicons = require('fAwesome6')
 local sampev = require("samp.events")
+
+
 local imgui = require ('mimgui')
 local encoding = require ('encoding')
 encoding.default = 'CP1251'
+local u8 = encoding.UTF8
+
 
 local widgets = require 'widgets'
 local AI_TOGGLE = {}
 local ToU32 = imgui.ColorConvertFloat4ToU32
-
 local filter = imgui.ImGuiTextFilter() 
-local u8 = encoding.UTF8
 local new = imgui.new
+
+local found_update = new.bool()
+local CentralGlMenu = new.bool()
+local LogMenu = new.bool()
+local outhmenu = new.bool()
+local SkupSellzxc = new.bool()
+
 local ffi = require 'ffi'
 local ltn12 = require("ltn12")
 local http = require("socket.http")
-local sf = require 'sampfuncs'
 local gta = ffi.load("GTASA")
 
 logfile = " "
@@ -29,11 +39,6 @@ local current_date = os.date("%d-%m-%Y")
 local current_time = os.date("[%H:%M:%S]")
 local file_path = "Lavka(rodina)Settings/ "..current_date..".log"
 
-local found_update = new.bool()
-local CentralGlMenu = new.bool()
-local LogMenu = new.bool()
-local outhmenu = new.bool()
-local SkupSellzxc = new.bool()
 local inicfg = require 'inicfg'
  local ini = inicfg.load({
     cfg ={
@@ -1257,7 +1262,7 @@ themes = {
 ----------------------------------------autoupdate + window----------------------------------------
 
 local lmPath = "Lavka Market Rodina Edition.lua"
-local lmUrl = "https://raw.githubusercontent.com/Theopochka/test2/main/Lavka%20Market.lua"
+local lmUrl = "https://raw.githubusercontent.com/Theopochka/Lavka-update-Rodina/main/Lavka%20Market%20Rodina%20Edition.lua"
 
 function downloadFile(url, path)
     local response = {}
