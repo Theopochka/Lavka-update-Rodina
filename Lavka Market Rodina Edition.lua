@@ -1,6 +1,6 @@
 script_name('Lavka Market || Rodina')
 
-local VersionV = '1.1'
+local VersionV = '1.0'
 script_version(VersionV)
 
 script_author('Theopka')
@@ -677,8 +677,8 @@ imgui.OnFrame(function() return CentralGlMenu[0] end,
             if imgui.Combo(u8'Выбор темы', theme, new['const char*'][#themesList](themesList), #themesList) then 
                 themes[theme[0]+1].func() 
                 iniSave() 
-                imgui.TextDisabled(u8'Скоро будет добавлена возможность делать свою тема(MoonMonet)')
             end
+            imgui.BulletText(u8'Скоро будет добавлена возможность делать свою тема(MoonMonet)')
             imgui.Separator()
             if imgui.ToggleButton(u8"Открытие меню Lavka Market при аренде лавки", Lavkaaikib) then
                 ini.cfg.Lavkaaikib =  Lavkaaikib[0]
@@ -764,7 +764,7 @@ function main()
     msg('Автор Theopka')
     check_update()
     sampRegisterChatCommand(ini.cfg.activation, ws_toggle)
-    sampRegisterChatCommand("update", function() found_update[0] = not found_update[0] end)
+    --sampRegisterChatCommand("update", function() found_update[0] = not found_update[0] end)
     sampRegisterChatCommand('calc', function(arg) 
         if #arg == 0 or not arg:find('%d+') then return sampAddChatMessage('[Калькулятор]: {DE9F00}Ошибка, введите /calc [пример]', 0x08A351) end
         sampAddChatMessage('[Lavka Market]: {DE9F00}'..arg..' = '..assert(load("return " .. arg))(), 0x08A351)
